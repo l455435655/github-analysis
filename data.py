@@ -4,10 +4,12 @@ import os
 class Data:
 
     def __init__(self, path:str=None):
-        self.__path = path
+        self.__dir_addr = path
 
         if path:
             print("初次运行初始化")
+            if not os.path.exists(self.__dir_addr):
+                raise RuntimeError("Path doesn't exist.")
             self.__read_1()
             self.__analysis()
             self.__save2json()
@@ -17,10 +19,13 @@ class Data:
 
     def __read_1(self):
         self.__dicts = []
-        with open(self.__path, 'r', encoding='utf-8') as f:
-            self.__jsons = [x for x in f.read().split('\n') if len(x)>0]
-            for self.__json in self.__jsons:
-                self.__dicts.append(json.loads(self.__json))
+        for root, dirs, files in os.walk(self.__dir_addr):
+            for file in files:
+                if file[-5:] == '.json' and file[-6:] != '1.json' and file[-6:] != '2.json' and file[-6:] != '3.json':
+                    with open(file, 'r', encoding='utf-8') as f:
+                        self.__jsons = [x for x in f.read().split('\n') if len(x)>0]
+                        for self.__json in self.__jsons:
+                            self.__dicts.append(json.loads(self.__json))
 
 
     def __analysis(self):
