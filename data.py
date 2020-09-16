@@ -41,7 +41,7 @@ class Data:
                 self.__name = self.__dict['actor']['login']
                 self.__repo = self.__dict['repo']['name']
                 self.__cnt_perP[self.__name + self.__event] = self.__cnt_perP.get(self.__name + self.__event, 0) + 1
-                self.__cnt_perR[self.__repo + self.__event] = self.__cnt_perP.get(self.__repo + self.__event, 0) + 1
+                self.__cnt_perR[self.__repo + self.__event] = self.__cnt_perR.get(self.__repo + self.__event, 0) + 1
                 self.__cnt_perPperR[self.__name + self.__repo + self.__event] = self.__cnt_perPperR.get(self.__name + self.__repo + self.__event, 0) + 1
 
 
