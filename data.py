@@ -63,7 +63,7 @@ class Data:
             self.__cnt_perP = json.load(f)
         with open("2.json", encoding='utf-8') as f:
             self.__cnt_perR = json.load(f)
-        with open("1.json", encoding='utf-8') as f:
+        with open("3.json", encoding='utf-8') as f:
             self.__cnt_perPperR = json.load(f)
 
 
